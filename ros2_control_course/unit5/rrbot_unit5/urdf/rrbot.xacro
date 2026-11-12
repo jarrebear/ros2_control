@@ -165,6 +165,40 @@
 
 <!-- place your ros2_control XML tags below this line -->
 
+  <ros2_control name="position_controllers_exercise" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <joint name="joint1">
+      <command_interface name="position">
+        <param name="min">-1000</param>
+        <param name="max">1000</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="joint2">
+      <command_interface name="position">
+        <param name="min">-1000</param>
+        <param name="max">1000</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="gz_ros2_control-system"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>$(find rrbot_unit5)/config/position_controller_config.yaml</parameters>
+    </plugin>
+  </gazebo>
+
 
 <!-- place your ros2_control XML tags above this line -->
 
